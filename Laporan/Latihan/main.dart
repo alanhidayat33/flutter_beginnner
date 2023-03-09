@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'TUGAS'),
+      home: const MyHomePage(title: 'LATIHAN'),
     );
   }
 }
@@ -54,14 +54,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      _counter++;
-      if(_counter>10){
+      /*_counter++;
+      if(_counter>30){
         _counter = 1;
-      }
+      }*/
 
-      _text = "Ganjil : ";
-      for(int i=0; i<=_counter; i++){
-        if(i%2 != 0){
+      _text = "Bilangan Genap kel 3: ";
+      for(int i=1; i<=_counter; i++){
+        if(i % 2 == 0 && i % 3 == 0){
           _text += '${i}, ';
         }
       }
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
+      body: Container(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Form(
@@ -114,6 +114,21 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               const Text(
                 'NILAI N :',
+              ),
+              TextField(
+                onChanged: (value){
+                  setState(() {
+                    _counter = int.parse(value);
+                    _incrementCounter();
+                  });
+                },
+                keyboardType: TextInputType.number,
+                decoration: new InputDecoration(
+                  hintText: "Masukkan N",
+                  border: OutlineInputBorder(
+                    borderRadius: new BorderRadius.circular(5.0),
+                  ),
+                ),
               ),
               /*TextFormField(
                 controller: textController,
@@ -141,10 +156,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   print("Validation Failed");
                 }
               }, child: Text("Submit")),*/
-              Text(
+              /*Text(
                 '$_counter',
                 style: Theme.of(context).textTheme.headlineMedium,
-              ),
+              ),*/
               Text(
                 _text,
                 style: Theme.of(context).textTheme.headlineMedium,
